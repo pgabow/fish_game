@@ -11,9 +11,9 @@ const sound = new Audio()
 const sound2 = new Audio()
 const more = new Audio()
 music.src = '../sound/music.mp3'
-sound.src = '../sound/sound.mp3'
+sound.src = 'https://pgabow.github.io/fish_game/sound/sound.mp3'
 sound2.src = '../sound/sound2.mp3'
-more.src = '../sound/more.mp3'
+more.src = 'https://pgabow.github.io/fish_game/sound/more.mp3'
 more.autoplay = true
 
 // Mouse interactivity
