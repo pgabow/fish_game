@@ -13,27 +13,50 @@ ctx.font = '50px Georgia'
 // more.autoplay = true
 
 // гугл достал со своими новыми политиками
+// const sound = new Audio('../sound/sound.mp3')
+// const more = new Audio('../sound/more.mp3')
+
+// async function playMore() {
+//   try {
+//     await more.play()
+// 		// more.autoplay = true
+//   } catch (error) {
+//     console.log('Ошибка воспроизведения more.mp3:', error)
+//   }
+// }
+
+// async function playSound() {
+//   try {
+//     await sound.play()
+//   } catch (error) {
+//     console.log('Ошибка воспроизведения sound.mp3:', error)
+//   }
+// }
+
+// playMore()
+
 const sound = new Audio('../sound/sound.mp3')
 const more = new Audio('../sound/more.mp3')
 
-async function playMore() {
-  try {
-    await more.play()
-		// more.autoplay = true
-  } catch (error) {
-    console.log('Ошибка воспроизведения more.mp3:', error)
-  }
+function playSound() {
+  sound.play().catch((error) => {
+    console.log('Ошибка воспроизведения звука:', error)
+  })
 }
 
-async function playSound() {
-  try {
-    await sound.play()
-  } catch (error) {
-    console.log('Ошибка воспроизведения sound.mp3:', error)
-  }
+function playMoreInBackground() {
+  // more.loop = true 
+  more.play().catch((error) => {
+    console.log('Ошибка воспроизведения фонового звука:', error)
+  })
 }
 
-playMore()
+canvas.addEventListener('click', () => {
+  playSound()
+})
+
+playMoreInBackground()
+
 
 // Mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect()
