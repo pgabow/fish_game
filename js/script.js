@@ -6,11 +6,34 @@ let score = 0
 let gameFrame = 0
 ctx.font = '50px Georgia'
 
-const sound = new Audio()
-const more = new Audio()
-sound.src = '../sound/sound.mp3'
-more.src = '../sound/more.mp3'
-more.autoplay = true
+// const sound = new Audio()
+// const more = new Audio()
+// sound.src = '../sound/sound.mp3'
+// more.src = '../sound/more.mp3'
+// more.autoplay = true
+
+// гугл достал со своими новыми политиками
+const sound = new Audio('../sound/sound.mp3')
+const more = new Audio('../sound/more.mp3')
+
+async function playMore() {
+  try {
+    await more.play()
+		// more.autoplay = true
+  } catch (error) {
+    console.log('Ошибка воспроизведения more.mp3:', error)
+  }
+}
+
+async function playSound() {
+  try {
+    await sound.play()
+  } catch (error) {
+    console.log('Ошибка воспроизведения sound.mp3:', error)
+  }
+}
+
+playMore()
 
 // Mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect()
@@ -192,7 +215,7 @@ function handleBubbles() {
 function popAndRemove(i) {
   if (bubblesArray[i]) {
     if (!bubblesArray[i].counted) score++
-    if (!bubblesArray[i].counted) sound.play()
+    if (!bubblesArray[i].counted) playSound()
     bubblesArray[i].counted = true
     bubblesArray[i].frameX++
     if (bubblesArray[i].frameX > 7) bubblesArray[i].pop = true
