@@ -45,7 +45,7 @@ function playSound() {
 }
 
 function playMoreInBackground() {
-  // more.loop = true 
+  more.loop = true 
   more.play().catch((error) => {
     console.log('Ошибка воспроизведения фонового звука:', error)
   })
@@ -53,9 +53,9 @@ function playMoreInBackground() {
 
 canvas.addEventListener('click', () => {
   playSound()
+	playMoreInBackground()
 })
 
-playMoreInBackground()
 
 
 // Mouse interactivity
